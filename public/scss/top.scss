@@ -1,0 +1,57 @@
+.top{
+    width: 100%;
+    height: 100px;
+    background-color: #A682FF;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 4px 12px;
+    // border-bottom-left-radius: 10px;
+    // border-bottom-right-radius: 10px;
+
+    //line-height: 50px;
+    font-size: 11px;
+
+
+    .pain{
+        background-color:#715AFF ;
+        height: 40px;
+        //width: 100px;
+        border-radius: 20px;
+        padding: 20px;
+        line-height: 0px;
+        color: white;
+
+        
+
+        &.not{
+            background-color: rebeccapurple;
+              
+            }
+
+    }
+
+    .login-box{
+        // height: 45px;
+        // border-radius: 20px;
+        // background-color: none;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         width: 250px;
+        // background-color: #102E4A;
+        div{
+            background-color:#715AFF ;
+            height: 40px;
+            //width: 100px;
+            border-radius: 20px;
+            padding: 20px;
+            line-height: 0px;
+            color: white;
+        }
+        .logout{
+            display: none;
+        }
+
+    }
+}

@@ -1,0 +1,64 @@
+.albums{
+    margin: 0 auto;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    //justify-content: space-evenly;
+    //background-color: royalblue;
+    flex-wrap: wrap;
+    margin-bottom: 200px;
+
+    .album{
+        box-shadow: rgba(0, 0, 0, 0.6) 0px 4px 12px;
+        width: 350px;
+        height: 400px;
+        background-color: #715AFF;
+        padding-top: 25px;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 50px;
+        // margin-left: 5px;
+        // margin-right: 5px;
+        border-radius: 20px;
+        padding-bottom: 50px;
+        border: solid 2px #715AFF;
+      
+       
+        .cover{
+            margin: 0 auto;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            object-fit: fill;
+            margin-top:50px ;
+            height: 200px;
+            width: 200px;
+            border-radius: 10px;
+        }
+        .cont{
+            align-items: flex-start;
+            //text-align: left;
+            margin-top: 20px;
+            width: 350px;
+            //background-color: #5887FF;
+           
+        }
+        span{
+            color: #102E4A;
+        }
+        h1{
+            //font-weight: 500;
+            font-size: 20px;
+            color: #102E4A;
+            
+            
+        }
+        p{
+            color: white;
+            font-size: 18px;
+            
+        }
+
+    }
+
+}
