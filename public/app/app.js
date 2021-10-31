@@ -32,13 +32,36 @@ _db = firebase.firestore();
         if(user){
             console.log("user")
             $(".logout").css("display", "block");
+            $(".logout").css("display", "block");
             $(".login").css("display", "none");
+
+
+            $(".nouser").css("display", "none");
+            $(".user").css("display", "flex");
+
+            loadData();
+
+
+
         }else{
             console.log("no user")
             $(".login").css("display", "block");
             $(".logout").css("display", "none");
+            $(".nouser").css("display", "flex");
+            $(".user").css("display", "none");
 
-
+            $(".albums").html('')
+            _db
+            .collection("Albums")
+            .where("num", "<=", 2)
+            .get()
+            .then(function(querySnapshot){
+                querySnapshot.forEach(function(doc){
+                    getAlbum(doc);
+                   
+                });
+            });
+        
 
         }
     });
@@ -53,7 +76,7 @@ signInWithProvider = (provider)=>{
     .then((result) => {
         Toast.fire({
             icon: 'success',
-            title: 'user signed in'
+            title: 'user signed in',
           })
      /** @type {firebase.auth.OAuthCredential} */
      var credential = result.credential;
@@ -85,7 +108,7 @@ signInGoogle = () =>{
 login = () =>{
     Swal.fire({
         title: '<h5 style="color:white">Login Form </h5>',
-        html: `<input type="text" id="login" class="swal2-input" placeholder="Username">
+        html: `<input style="color:white;" type="text" id="login" class="swal2-input" placeholder="Email">
         <input type="password" id="password" class="swal2-input" placeholder="Password">`,
         confirmButtonText: 'Log in',
         confirmButtonColor: "#102E4A",
@@ -152,11 +175,39 @@ signOut = () =>{
                 });
             });
         })
+        $(".no-hiphop").click(function(e){
+            $(".albums").html('')
+            _db
+            .collection("Albums")
+            .where("genre" ,"==" ,"Hip hop")
+            .where("num", "<=", 2)
+            .get()
+            .then(function(querySnapshot){
+                querySnapshot.forEach(function(doc){
+                    getAlbum(doc);
+                   
+                });
+            });
+        })
         $(".rb").click(function(e){
             $(".albums").html('')
             _db
             .collection("Albums")
             .where("genre" ,"==" ,"R&B")
+            .get()
+            .then(function(querySnapshot){
+                querySnapshot.forEach(function(doc){
+                    getAlbum(doc);
+                   
+                });
+            });
+        })
+        $(".no-rb").click(function(e){
+            $(".albums").html('')
+            _db
+            .collection("Albums")
+            .where("genre" ,"==" ,"R&B")
+            .where("num", "<=", 2)
             .get()
             .then(function(querySnapshot){
                 querySnapshot.forEach(function(doc){
@@ -179,6 +230,20 @@ signOut = () =>{
                 });
             });
         })
+        $(".no-soundtrack").click(function(e){
+            $(".albums").html('')
+            _db
+            .collection("Albums")
+            .where("genre" ,"==" ,"Soundtrack")
+            .where("num", "<=", 2)
+            .get()
+            .then(function(querySnapshot){
+                querySnapshot.forEach(function(doc){
+                    getAlbum(doc);
+                   
+                });
+            });
+        })
 
         $(".all").click(function(e){
             $(".albums").html('')
@@ -192,9 +257,23 @@ signOut = () =>{
                 });
             });
         })
+        $(".no-all").click(function(e){
+            $(".albums").html('')
+            _db
+            .collection("Albums")
+            .where("num", "<=", 2)
+            .get()
+            .then(function(querySnapshot){
+                querySnapshot.forEach(function(doc){
+                    getAlbum(doc);
+                   
+                });
+            });
+        })
     }
 
 function loadData(){
+    $(".albums").html(" ");
     _db
     .collection("Albums")
     .get()
@@ -248,7 +327,6 @@ $(document).ready(function(){
     try{
         let app = firebase.app();
         initFirebase();
-        loadData();
         initListeners();
 
     } catch{

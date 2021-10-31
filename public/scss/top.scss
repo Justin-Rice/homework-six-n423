@@ -12,7 +12,15 @@
     //line-height: 50px;
     font-size: 11px;
 
+    .cont{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
 
+        &.nouser{
+        display: none;
+
+        }
     .pain{
         background-color:#715AFF ;
         height: 40px;
@@ -21,6 +29,8 @@
         padding: 20px;
         line-height: 0px;
         color: white;
+        margin-left: 20px;
+
 
         
 
@@ -30,7 +40,8 @@
             }
 
     }
-
+   
+}
     .login-box{
         // height: 45px;
         // border-radius: 20px;
