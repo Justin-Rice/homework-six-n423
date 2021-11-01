@@ -34,6 +34,8 @@ _db = firebase.firestore();
             $(".logout").css("display", "block");
             $(".logout").css("display", "block");
             $(".login").css("display", "none");
+            $(".create").css("display", "none");
+
 
 
             $(".nouser").css("display", "none");
@@ -47,6 +49,8 @@ _db = firebase.firestore();
             console.log("no user")
             $(".login").css("display", "block");
             $(".logout").css("display", "none");
+            $(".create").css("display", "flex");
+
             $(".nouser").css("display", "flex");
             $(".user").css("display", "none");
 
@@ -109,7 +113,7 @@ create = () =>{
     Swal.fire({
         title: '<h5 style="color:white">Create Account</h5>',
         html: `<input style="color:white;" type="text" id="login" class="swal2-input" placeholder="Email">
-        <input type="password" id="password" class="swal2-input" placeholder="Password">`,
+        <input input style="color:white;" type="password" id="password" class="swal2-input" placeholder="Password">`,
         confirmButtonText: 'Create and Login',
         confirmButtonColor: "#102E4A",
         focusConfirm: false,
@@ -153,7 +157,7 @@ login = () =>{
     Swal.fire({
         title: '<h5 style="color:white">Login Form </h5>',
         html: `<input style="color:white;" type="text" id="login" class="swal2-input" placeholder="Email">
-        <input type="password" id="password" class="swal2-input" placeholder="Password">`,
+        <input input style="color:white;" type="password" id="password" class="swal2-input" placeholder="Password">`,
         confirmButtonText: 'Log in',
         confirmButtonColor: "#102E4A",
         focusConfirm: false,
@@ -163,7 +167,7 @@ login = () =>{
           const login = Swal.getPopup().querySelector('#login').value
           const password = Swal.getPopup().querySelector('#password').value
           if (!login || !password) {
-            Swal.showValidationMessage(`Please email and password`)
+            Swal.showValidationMessage(`Please add email and password`)
           }else{
             Toast.fire({
                 icon: 'success',
