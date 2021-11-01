@@ -105,6 +105,50 @@ signInGoogle = () =>{
     var provider = new firebase.auth.GoogleAuthProvider();
     signInWithProvider(provider);
 }
+create = () =>{
+    Swal.fire({
+        title: '<h5 style="color:white">Create Account</h5>',
+        html: `<input style="color:white;" type="text" id="login" class="swal2-input" placeholder="Email">
+        <input type="password" id="password" class="swal2-input" placeholder="Password">`,
+        confirmButtonText: 'Create and Login',
+        confirmButtonColor: "#102E4A",
+        focusConfirm: false,
+        background: "#715AFF",
+        text: "white",
+        preConfirm: () => {
+          const login = Swal.getPopup().querySelector('#login').value
+          const password = Swal.getPopup().querySelector('#password').value
+          if (!login || !password) {
+            Swal.showValidationMessage(`Please add email and password`)
+          }else{
+            Toast.fire({
+                icon: 'success',
+                title: 'user signed in'
+              })
+              //console.log('login')
+              firebase
+              .auth()
+              .createUserWithEmailAndPassword(login, password)
+              .then((userCredential) => {
+                // Signed in 
+                var user = userCredential.user;
+                console.log(userCredential.user);
+                // ...
+              })
+              .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log(errorMessage)
+            
+                // ..
+              });
+            
+                }
+                return { login: login, password: password }
+        }
+        
+    })
+}
 login = () =>{
     Swal.fire({
         title: '<h5 style="color:white">Login Form </h5>',
